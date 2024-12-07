@@ -12,7 +12,9 @@ var (_, answer2) = Regex.Matches(input, @"do\(\)|don't\(\)|mul\((\d+),(\d+)\)")
     {
         "do()" => (true, state.total),
         "don't()" => (false, state.total),
-        _ => state.mulEnabled ? (true, state.total + int.Parse(match.Groups[1].Value) * int.Parse(match.Groups[2].Value)) : state
+        _ => state.mulEnabled
+            ? (true, state.total + int.Parse(match.Groups[1].Value) * int.Parse(match.Groups[2].Value))
+            : state
     });
 
 Console.WriteLine(answer2);

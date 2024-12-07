@@ -9,7 +9,9 @@ for (var y = 0; y < input.Length; y++)
     {
         answer1 += Search(x, y, "XMAS", [(1, 0), (-1, 0), (0, 1), (0, -1), (1, 1), (-1, -1), (1, -1), (-1, 1)]);
         answer2 += (Search(x - 1, y - 1, "MAS", [(1, 1)]) > 0 || Search(x - 1, y - 1, "SAM", [(1, 1)]) > 0) &&
-            (Search(x - 1, y + 1, "MAS", [(1, -1)]) > 0 || Search(x - 1, y + 1, "SAM", [(1, -1)]) > 0) ? 1 : 0;
+                   (Search(x - 1, y + 1, "MAS", [(1, -1)]) > 0 || Search(x - 1, y + 1, "SAM", [(1, -1)]) > 0)
+            ? 1
+            : 0;
     }
 }
 
