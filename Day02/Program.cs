@@ -11,7 +11,7 @@ var count2 = reports.Count(IsSafeWithProblemDampener);
 Console.WriteLine(count2);
 
 bool IsSafeWithProblemDampener(int[] levels) =>
-    IsSafe(levels) || levels.Where((_, i) => IsSafe([..levels[..i], ..levels[(i + 1)..]])).Any();
+    IsSafe(levels) || levels.Where((_, i) => IsSafe([..levels.Where((_, j) => i != j)])).Any();
 
 bool IsSafe(int[] levels)
 {

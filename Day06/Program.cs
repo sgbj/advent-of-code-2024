@@ -10,10 +10,10 @@ var loops = Enumerable.Range(0, input.Length)
 
 Console.WriteLine(loops);
 
-(int Positions, bool IsLoop) Predict((int X, int Y)? block = null)
+(int Positions, bool IsLoop) Predict((int X, int Y)? obstruction = null)
 {
     var (x, y, dir) = (sx, sy, 0);
-    var visited = new HashSet<(int x, int y, int dir)>();
+    var visited = new HashSet<(int X, int Y, int Direction)>();
 
     while (visited.Add((x, y, dir)))
     {
@@ -28,10 +28,10 @@ Console.WriteLine(loops);
 
         if (y + dy < 0 || y + dy >= input.Length || x + dx < 0 || x + dx >= input[y + dy].Length)
         {
-            return (visited.Select(v => (v.x, v.y)).Distinct().Count(), false);
+            return (visited.Select(v => (v.X, v.Y)).Distinct().Count(), false);
         }
 
-        if (input[y + dy][x + dx] == '#' || (x + dx, y + dy) == block)
+        if (input[y + dy][x + dx] == '#' || (x + dx, y + dy) == obstruction)
         {
             dir = (dir + 1) % 4;
         }

@@ -20,7 +20,7 @@ bool InOrder(int[] update) => Enumerable.Range(0, update.Length - 1)
 
 int[] Order(int[] update) =>
 [
-    .. update.Order(Comparer<int>.Create((a, b) =>
+    ..update.Order(Comparer<int>.Create((a, b) =>
         rules.Any(r => r[0] == a && r[1] == b) ? -1 :
         rules.Any(r => r[0] == b && r[1] == a) ? 1 : 0))
 ];
