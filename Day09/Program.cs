@@ -52,16 +52,16 @@ long CompactWholeFiles()
             size++;
         }
 
-        for (int i = 0, free = 0; i < end; i++)
+        for (int start = 0, free = 0; start < end; start++)
         {
-            if (blocks[i] == -1)
+            if (blocks[start] == -1)
             {
                 if (++free == size)
                 {
-                    for (var j = 0; j < size; j++)
+                    for (var i = 0; i < size; i++)
                     {
-                        blocks[i - j] = blocks[end - j];
-                        blocks[end - j] = -1;
+                        blocks[start - i] = blocks[end - i];
+                        blocks[end - i] = -1;
                     }
 
                     break;
