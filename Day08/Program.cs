@@ -1,5 +1,5 @@
 ﻿var input = await File.ReadAllLinesAsync("input.txt");
-var antennas = input.SelectMany((row, y) => row.Select((c, x) => (c, x, y)))
+var antennas = input.SelectMany((line, y) => line.Select((c, x) => (x, y, c)))
     .Where(a => a.c != '.')
     .GroupBy(a => a.c)
     .ToList();
