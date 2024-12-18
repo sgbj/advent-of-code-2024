@@ -35,7 +35,7 @@ int GetSafetyFactor(int w, int h, int seconds)
            robots.Count(robot => robot[0] > w / 2 && robot[0] < w && robot[1] > h / 2 && robot[1] < h);
 }
 
-bool HasChristmasTree(int[][] robots, int width, int height)
+bool HasChristmasTree(int[][] robots, int w, int h)
 {
     foreach (var robot in robots)
     {
@@ -45,8 +45,8 @@ bool HasChristmasTree(int[][] robots, int width, int height)
         {
             for (var dx = -dy; dx <= dy; dx++)
             {
-                var x = (robot[0] + dx + width) % width;
-                var y = (robot[1] + dy + height) % height;
+                var x = (robot[0] + dx + w) % w;
+                var y = (robot[1] + dy + h) % h;
 
                 if (!robots.Any(r => r[0] == x && r[1] == y))
                 {
