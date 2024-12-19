@@ -18,6 +18,7 @@ while (queue.TryDequeue(out var current, out var score))
     if (current.X == end.x && current.Y == end.y && score <= bestScore)
     {
         bestScore = score;
+
         foreach (var p in path)
         {
             bestSpots.Add(p);
@@ -38,8 +39,8 @@ while (queue.TryDequeue(out var current, out var score))
     State[] nextStates =
     [
         new(current.X + dx, current.Y + dy, current.Direction, score + 1, path),
-        new(current.X, current.Y, (current.Direction + 1) % 4, score + 1_000, path),
-        new(current.X, current.Y, (current.Direction + 3) % 4, score + 1_000, path)
+        new(current.X, current.Y, (current.Direction + 1) % 4, score + 1000, path),
+        new(current.X, current.Y, (current.Direction + 3) % 4, score + 1000, path)
     ];
 
     foreach (var next in nextStates)

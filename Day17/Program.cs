@@ -32,6 +32,7 @@ while (instructionPointer < program.Length)
                 instructionPointer = operand;
                 continue;
             }
+
             break;
 
         case 4:
