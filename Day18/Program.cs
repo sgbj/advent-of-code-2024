@@ -9,18 +9,18 @@ const int size = 70, take = 1024;
 
 P start = (0, 0), end = (size, size);
 
-Console.WriteLine(Simulate([..input.Take(take)]).Steps);
+Console.WriteLine(Simulate([..input.Take(take)]));
 
 for (var i = take; i < input.Length; i++)
 {
-    if (!Simulate([..input.Take(i)]).Escaped)
+    if (Simulate([..input.Take(i)]) < 0)
     {
         Console.WriteLine(input[i - 1]);
         break;
     }
 }
 
-(bool Escaped, int Steps) Simulate(HashSet<P> corrupted)
+int Simulate(HashSet<P> corrupted)
 {
     var queue = new PriorityQueue<P, int>();
     var steps = new Dictionary<P, int>();
@@ -51,5 +51,5 @@ for (var i = take; i < input.Length; i++)
         }
     }
 
-    return (steps.TryGetValue(end, out var min), min);
+    return steps.GetValueOrDefault(end, -1);
 }
